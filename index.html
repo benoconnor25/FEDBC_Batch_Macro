@@ -1,0 +1,165 @@
+<html>
+	<head>
+		<style>
+			#app {
+				display: grid;
+				height: 100%;
+				grid-template-rows: auto auto auto 1fr auto auto;
+				padding: 0 30px;
+			}
+
+			#gamemodeHolder {
+				display: grid;
+				grid-template-columns: auto 1fr;
+			}
+
+			#gamemodeDescription {
+				grid-column: 1 / -1
+			}
+
+			#loading {
+				position: relative;
+			}
+			#loading.error {
+				color: red;
+			}
+			#loading img {
+				margin-left: 5px;
+				height: 1em;
+				position: absolute;
+				top: 50%;
+				transform: translate(0, -50%);
+			}
+
+			#QnAHolder {
+				display: grid;
+				grid-template-columns: 1fr auto;
+				grid-column-gap: 15px;
+				margin: auto 0;
+				align-items: center;
+			}
+
+			#question {
+				font-size: large;
+			}
+
+			#answers {
+				display: grid;
+				grid-row-gap: 5px;
+			}
+
+			#a1Holder, #a2Holder {
+				display: grid;
+				grid-template-columns: auto 1fr;
+				grid-column-gap: 5px;
+			}
+
+			#answerButtons {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				grid-column-gap: 20px;
+			}
+
+			#answerButtons button {
+				font-size: large;
+			}
+
+			#result {
+				grid-column: 1 / -1;
+				text-align: center;
+				position: relative;
+			}
+
+			#result > div {
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%, -50%);
+			}
+
+			#correct {
+				color: green;
+			}
+
+			#incorrect {
+				color: red;
+			}
+
+			#gameInfoHolder {
+				margin: 0 auto 30px;
+				align-self: end;
+			}
+
+			#gameInfo {
+				padding-top: 30px;
+				display: grid;
+				grid-template-columns: 1fr auto;
+				grid-column-gap: 5px;
+			}
+
+
+
+
+			.hidden {
+				display: none !important;
+			}
+		</style>
+		<script type="text/javascript" src="questions.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<div id="title">
+				<h1>Sales Order Analysis for Company XYZ</h1>
+				<h3>FE Digital Camp - Mini Game 1</h3>
+			</div>
+			<div id="gamemodeHolder">
+				<div>Gamemode: </div>
+				<div>
+					<select id="gamemode">
+						<option value="rounds">Rounds</option>
+						<option value="countdown">Countdown</option>
+						<option value="casual">Casual</option>
+					</select>
+				</div>
+				<div id="gamemodeDescription"></div>
+			</div>
+			<div id="problemStatement">
+				<h3>Problem Statement</h3>
+				<p>Your Client is a segment made up of many smaller businesses. Recently, they have been trying to get a better sense of their sales order volumes across all of the groups. Specifically, they are interested in seeing a summary of sales orders by customers and if those customers span across multiple groups so they can make strategic decisions on how to realign their salesmen and customer service group.</p>
+				<p>User Alteryx to combine ERP sales order data into one file. Given the files do not have a unique company field, add a column to each file based on the file name to reference the company field. Summarize the data to answer the question below:</p>
+			</div>
+			<div id="buttonHolder">
+				<button id="start" disabled>Start Game</button>
+				<span id="loading">Loading data... <img src='loading.gif'></span>
+			</div>
+			<div id="QnAHolder" class="hidden">
+				<div id="question"></div>
+				<div id="answers">
+					<div id="a1Holder">Answer 1: <input id="a1"></div>
+					<div id="a2Holder">Answer 2: <input id="a2"></div>
+					<div>Type "none" or "0" if no results.</div>
+					<div id="answerButtons">
+						<button id="skip">Skip Question</button>
+						<button id="submit">Check Answer</button>
+					</div>
+				</div>
+			</div>
+			<div id="result">
+				<hr>&nbsp;
+				<div id="correct" class="hidden"><h3>Correct</h3></div>
+				<div id="incorrect" class="hidden"><h3>Incorrect</h3></div>
+				<hr>
+			</div>
+			<div id="gameInfoHolder">
+				<div id="gameInfo">
+					<div class="roundTime"><b>Round Time:</b></div><div id="roundTime" class="roundTime">00:00:00</div>
+					<div class="gameTime"><b>Game Time:</b></div><div id="gameTime" class="gameTime">00:00:00</div>
+					<div class="roundsCompleted"><b>Rounds Completed:</b></div><div id="roundsCompleted" class="roundsCompleted">0</div>
+					<div class="avgTimePerRound"><b>Average Time per Round:</b></div><div id="avgTimePerRound" class="avgTimePerRound">00:00:00.00</div>
+
+				</div>
+			</div>
+		</div>
+		<script src="app.js"></script>
+	</body>
+</html>

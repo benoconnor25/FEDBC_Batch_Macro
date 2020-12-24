@@ -1,0 +1,6 @@
+ModelID,Year,PosNeg,Position,Region
+range,range,discrete,ordinal,discrete
+101,2016,positive,1,AIM
+166,2019,negative,2,Europe
+,,,3,Asia
+,,,,Americas
